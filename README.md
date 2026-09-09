@@ -55,9 +55,11 @@ python -m http.server 8945 --bind 127.0.0.1
 
 ### 已修复
 - 移除 Kimi 平台专属脚本 `https://www.kimi.com/sdk-seed.js`（迁移到新环境后无用且可能报错）。
+- **API Key 已不再暴露（2026-09-09）**：前端 JS 包中的明文 Key 已彻底移除，AI 请求改为走服务端代理。模型已切换为多模态视觉理解模型 `deepseek-v4-flash-vision-exp`。
+- 代理后端（持有 Key，仅服务端）：见 `../doterra-app/`（Node 零依赖，`POST /api/chat` 转发 DeepSeek），已发布到 https://db478171155645199b6c383ae53a0506.app.workbuddy.link
+- ⚠️ 历史遗留：旧 Key `sk-4785...` 曾公开暴露过（含 git 历史），建议去 DeepSeek 后台作废。
 
-### ⚠️ 已知风险（重要）
-1. **API Key 硬编码泄露（高危）**：DeepSeek API Key 以明文写死在前端 JS 包中（`src` 内可检索到 `sk-…`）。任何访问者都能提取该 Key 盗用额度。
-   建议：① 尽快在 DeepSeek 后台作废并更换此 Key；② 如需继续使用 AI 功能，搭建一个后端代理接口转发请求，Key 只存在服务端。
+### 备注
+- 代理接口当前为公开调用（无鉴权），配合前端每日 100 次的额度限制使用；如额度消耗异常可在代理层加访问限制。
 2. 字体依赖第三方镜像 CDN（fonts.loli.net / gstatic.loli.net），CDN 不可用时字体会回退，页面仍可用。
 3. 测试中曾出现"白屏"现象，经排查为浏览器自动化工具在 reload 后丢失标签页的误报，与站点代码无关（正常导航 3/3 稳定）。
