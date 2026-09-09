@@ -21,6 +21,17 @@ doterra-site/
 - `src/pages/`：Home.tsx
 - `src/sections/`：AromaDailySign（芳香日签）、PainPointTheater（痛点剧场）、HotspotHelper（热点借势）、BrandStory（品牌故事）、SmartDiagnosis（智能问诊）、ProductScript（产品话术）、ObjectionHandler（异议处理）、ClientManager（客户档案）、TeamCenter（团队中心）、VisionAISection 等
 
+## 在线部署（GitHub Pages）
+
+- 仓库：https://github.com/GT-AI-3396815/xiangyu-daoshi
+- 线上地址：https://gt-ai-3396815.github.io/xiangyu-daoshi/
+
+### 子路径白屏修复（重要）
+
+原包使用 React Router 声明式路由 `<Route path="/">`，部署到 GitHub Pages 子路径
+`/xiangyu-daoshi/` 时报 `No routes matched location "/xiangyu-daoshi/"` 导致整页白屏。
+已在 JS 包中将路由改为通配 `path:"/*"`（单页应用任意路径均可匹配），修复后线上验证通过。
+
 ## 本地运行
 
 ```bash
