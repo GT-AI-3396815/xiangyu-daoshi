@@ -26,6 +26,14 @@ doterra-site/
 - 仓库：https://github.com/GT-AI-3396815/xiangyu-daoshi
 - 线上地址：https://gt-ai-3396815.github.io/xiangyu-daoshi/
 
+## 2026-09-11 内容与安全升级
+
+- **芳疗师工具箱**（悬浮入口进入）新增：精油专业档案（12 款主力油拉丁学名/化学成分/安全要点）、安全速查（光敏完整清单/孕哺期禁忌/儿童年龄分级/宠物禁忌/癫痫高血压/口服合规口径）、合规话术转换器 + 标准免责声明库、事业宝典（会员制度/套组框架/晋级架构/价格管理器）、客户教育素材库（CPTG/单方vs复方/椰子油等 6 篇可转发）、节气用油速查、滚珠瓶换算、AI 情绪处方。
+- **去虚构人设**：AI 不再自称"深耕 8 年"；系统提示注入合规底线（不宣称疗效、提示就医、以官方资料为准）。
+- **SEO**：完整 meta description/keywords/OG 标签。
+- **AI 服务端架构（doterra-app）**：完全无状态——token 为 HMAC 签名（Authorization / X-Auth-Token / ?token= 三通道），用户数据存客户端 localStorage（含导出/导入迁移），AI 代理保留：Key 服务端持有、模型强制、额度限制、合规过滤、失败退还额度。
+- ⚠️ DeepSeek 账户余额不足（402）时 AI 功能返回友好提示，充值后自动恢复。
+
 ### 子路径白屏修复（重要）
 
 原包使用 React Router 声明式路由 `<Route path="/">`，部署到 GitHub Pages 子路径
